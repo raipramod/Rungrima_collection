@@ -1,0 +1,93 @@
+<div class="mx-5" style="margin-top: 5rem;">
+    <style>
+        table * {
+            color: white;
+            border: none;
+        }
+        .hide-o-msg {
+            display: none;
+        }
+    </style>
+    <h1>Cart</h1>
+    <table class="table mt-5">
+        <thead style="background-color: #fff2; border: none;" class="mb-5">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Date Added to Cart</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of cartItems; let i = index">
+            <tr>
+                <th scope="row" routerLink="/shop/products/{{item.product.id}}">{{item.product.name}}</th>
+                <td>${{item.product.price | number: '1.2-2'}}</td>
+                <td>
+                    <div class="d-flex" style="align-items: center;">
+                        <p style="margin-right: 1rem;">{{ item.quantity }}</p>
+                        <button class="bg-transparent">
+                            <fa-icon 
+                            [icon]="caretDown" 
+                            [style.color]="'#faa'" 
+                            class="mx-1" 
+                            size="2x"
+                            (click)="decreaseQuantity(item)"
+                        ></fa-icon>
+                        </button>
+                        <button class="bg-transparent">
+                            <fa-icon 
+                            [icon]="caretUp" 
+                            [style.color]="'#afa'" 
+                            class="mx-1" 
+                            size="2x"
+                            (click)="increaseQuantity(item)"
+                        ></fa-icon>
+                        </button>
+                    </div>
+                </td>
+                <td>{{item.addedOn | date: 'MM/dd/YYYY'}}</td>
+                <td>${{item.totalPrice | number: '1.2-2'}}</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h4 class="text-success font-weight-bold">${{getTotal() | number: '1.2-2'}}</h4></td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-success" *ngIf="cartItems" (click)="checkOut()">Checkout</button></td>
+              </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="loader-show" *ngIf="buyLoader">
+    <div class="loader-shows">
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+</div>
+
+
+
+<div  class="toast-container position-fixed bottom-0 end-0 p-3 hide-o-msg" id="toast-id">
+    <div role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Order Placed Successfully</strong>
+      </div>
+      <div class="toast-body bg-light text-dark">
+        Please check your email, Order placed uccessfully.
+      </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="row m-5 pt-5">
+    <div class="spinner-border text-light" role="status" *ngIf="orders.length <= 0 && loading == true">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    <h1 
+        *ngIf="orders.length <= 0 && loading == false"
+        class="mx-auto" 
+        style="text-align: center; margin-top: 10rem;"
+    >Orders not found</h1>
+
+    <div *ngIf="orders.length > 0">
+
+
+        <table class="table table-dark table-striped table-striped-columns table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tracking Number</th>
+                    <th scope="col">Total Quantity</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Order Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pointer" *ngFor="let order of orders; let i = index;" (click)="showOrderItems(order)">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{order.orderTrackingNumber}}</td>
+                        <td>{{order.totalQuantity}}</td>
+                        <td>${{order.totalPrice | number : '1.2-2'}}</td>
+                        <td>{{order.dateCreated | date: 'MMM d, yyyy'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        
+              
+              <br>
+              <div>Selected Order Transaction: {{selectedOrder.orderTrackingNumber}}</div>
+                <table class="table table-success table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Item Price</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let orderItem of selectedOrder.orderItems; let i = index;" class="aligning pointer" (click)="navigateToProduct(orderItem.productId)">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>
+                          <img class="prod-img rounded" [src]="orderItem.imageUrl" [alt]="orderItem.productId">
+                        </td>
+                        <td>${{orderItem.unitPrice / orderItem.quantity}}</td>
+                        <td>${{orderItem.unitPrice}}</td>
+                        <td>{{orderItem.quantity}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+    </div>
+</div>

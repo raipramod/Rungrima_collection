@@ -1,0 +1,17 @@
+
+.loader-show {
+	position: fixed; 
+    left: 50%;
+    top: 50%;
+	height: 100%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(138, 132, 132, 0.24); 
+}
+
+.loader-shows {
+	position: fixed; 
+    left: 50%;
+    top: 50%;
+	transform: translate(-50%, -50%);
+}

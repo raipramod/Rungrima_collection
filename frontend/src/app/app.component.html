@@ -1,0 +1,64 @@
+<div>
+    <style>
+        * {
+            color: white;
+        }
+        nav {
+            box-shadow: 5px 5px 20px #000;
+        }
+        @media(max-width: 960px) {
+          .hide {
+            display: none !important;
+          }
+        }
+
+        .logo {
+          width: 50px;
+          height: 50px;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-12 px-5 mb-5 fixed-top">
+        <!-- <a class="navbar-brand" href="#">ShopApp</a> -->
+        <a class="navbar-brand" href="#">
+          <img class="logo" src="/assets/static/images/logo.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="showHideNavbar()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse d-flex hide" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto" style="flex-grow: 1;">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="shop">Rungrima Collection</a>
+            </li>
+            <li *ngIf="!isTokenThere" class="nav-item" >
+              <a class="nav-link" routerLink="register">Register</a>
+            </li>
+            <li *ngIf="!isTokenThere" class="nav-item">
+                <a class="nav-link" routerLink="login">Login</a>
+            </li>
+            <li *ngIf="isTokenThere" class="nav-item">
+                <a class="nav-link" routerLink="account">Account</a>
+            </li>
+            <li *ngIf="isTokenThere" class="nav-item">
+                <a class="nav-link" routerLink="cart">Cart</a>
+            </li>
+            <li *ngIf="isTokenThere" class="nav-item">
+                <a class="nav-link" routerLink="order">Orders</a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0 d-flex">
+            <input 
+                class="form-control mr-sm-2 bg-transparent text-success" 
+                type="search" 
+                placeholder="Search products" 
+                aria-label="Search"
+                [(ngModel)]="term"
+                (change)="search()"
+                name="term"
+            >
+          </div>
+        </div>
+      </nav>
+    <router-outlet></router-outlet>
+</div>

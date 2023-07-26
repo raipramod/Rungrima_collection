@@ -1,0 +1,116 @@
+<div class="container py-5">
+    <style>
+        .product-img-container {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("../../../assets/static/images/product-placeholder.png");
+            height: 500px;
+            /* width: 500px; */
+        }
+
+        @media(min-width: 760px) {
+            .cml {
+                margin-left: 20px;
+            }
+        }
+
+        .hidel {
+            display: none;
+        }
+
+        .hide-o-msg {
+            display: none;
+        }
+    </style>
+    <div class="row m-5">
+                
+        <div 
+            class="col-12 col-md-5" 
+            *ngIf="product != undefined && loading == false" id="img-container">
+            
+            <div id="lens"></div>
+            <img id="featured" [src]="product.imageUrl">
+        </div>
+
+        <div 
+        *ngIf="product != undefined && loading == false"
+            class="col-12 col-md-6 rounded px-5 pt-5 pb-3 cml" 
+            style="border: 1px solid white;"
+        >
+            <h2>{{ product.name }}</h2>
+            <p class="text-muted">Added on {{ product.addedOn | date: 'MMM d, yyyy'}}</p>
+            <div class="d-flex mt-5" style="justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <h1>${{ product.price | number : '1.2-2' }}</h1>
+                <div>
+
+                    
+                    <a routerLink="/login" class="btn btn-warning mb-1" style="margin-right: 5px;" *ngIf="!user">Buy</a>
+
+                    <button class="btn btn-warning mb-1" style="margin-right: 5px;" *ngIf="user" (click)="createOrder()">Buy</button>
+
+                    <a routerLink="/login" class="btn btn-success mb-1" 
+                    *ngIf="!isProductInCart && !user"> Add to cart </a>
+
+                    
+                    
+                    <button 
+                    *ngIf="!isProductInCart && user" 
+                    class="btn btn-success mb-1" 
+                    (click)="addToCart()"
+                    >Add to cart</button>
+                    
+                    <button *ngIf="isProductInCart" class="btn btn-secondary mb-1" disabled>In cart</button>
+                    
+                </div>
+            </div>
+            <h5 class="my-4">Description</h5>
+            <p style="text-align: justify; font-size: 14px;">
+                {{ product.description }}                
+            </p>
+        </div>
+
+        <div class="spinner-border text-light" role="status" *ngIf="product == undefined && loading == true">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+
+        <h1 
+            *ngIf="product == undefined && loading == false"
+            class="mx-auto" 
+            style="text-align: center; margin-top: 10rem;"
+        >Product not found</h1>
+    </div>
+</div>
+
+<div class="loader-show" *ngIf="buyLoader">
+    <div class="loader-shows">
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+</div>
+
+
+<div  class="toast-container position-fixed bottom-0 end-0 p-3 hide-o-msg" id="toast-id">
+    <div role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Order Placed Successfully</strong>
+      </div>
+      <div class="toast-body bg-light text-dark">
+        Please check your email, Order placed uccessfully.
+      </div>
+    </div>
+</div>
+
+
+<div *ngIf="product != undefined && loading == false" class="toast-container position-fixed bottom-0 end-0 p-3 hidel" id="toast">
+    <div role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">{{product.name}}</strong>
+      </div>
+      <div class="toast-body bg-light text-dark">
+        {{product.name}} added into cart.
+      </div>
+    </div>
+</div>
