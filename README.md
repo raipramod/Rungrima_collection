@@ -1,6 +1,6 @@
 # E-Commerce Project
 
-![E-Commerce Project](images/Capture1.png)
+![](images/Capture1.PNG)
 
 ## Introduction
 
@@ -38,31 +38,31 @@ The Home Page welcomes users to the E-Commerce website. It showcases featured pr
 
 ## Product Page
 
-![Product Page](images/Capture2.png)
+![](images/Capture2.PNG)
 
 The Product Page provides detailed information about a specific product. Users can view product images, descriptions, prices, and other relevant details before deciding to add the item to their cart.
 
 ## Account Page
 
-![Account Page](/images/Capture4.png)
+![](images/Capture4.PNG)
 
 The Account Page allows users to manage their accounts. They can sign in or create a new account if they are new to the platform. Once logged in, users can update their personal information.
 
 ## Cart Page
 
-![Cart Page](/images/Capture3.png)
+![](images/Capture3.PNG)
 
 The Cart Page displays all the items that users have added to their cart. From here, users can review their selected items, adjust quantities, and proceed to the checkout process.
 
 ## Order Page
 
-![Order Page](/images/Capture5.png)
+![](images/Capture5.PNG)
 
 It provides us all the orders which we placed their tracking numbers and details of the orders with quantities and prices.
 
 ## Email Confirmation
 
-![Email Confirmation](/images/Capture6.png)
+![](images/Capture6.PNG)
 
 When we place the order it will provide us the confirmation email that the order has been placed successfully and the tracking link to track our orders.
 
