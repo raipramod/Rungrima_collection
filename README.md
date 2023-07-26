@@ -33,8 +33,7 @@ To run the project locally on your machine, follow these steps:
 4. Launch the application and start exploring the features.
 
 ## Home Page
-![](images/Capture1.png)
-
+![](images/Capture1.PNG)
 The Home Page welcomes users to the E-Commerce website. It showcases featured products and encourage them to explore further.
 
 ## Product Page
