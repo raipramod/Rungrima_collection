@@ -46,25 +46,25 @@ The Product Page provides detailed information about a specific product. Users c
 
 ## Account Page
 
-![Account Page](images/Capture4.png)
+![Account Page](/images/Capture4.png)
 
 The Account Page allows users to manage their accounts. They can sign in or create a new account if they are new to the platform. Once logged in, users can update their personal information.
 
 ## Cart Page
 
-![Cart Page](images/Capture3.png)
+![Cart Page](/images/Capture3.png)
 
 The Cart Page displays all the items that users have added to their cart. From here, users can review their selected items, adjust quantities, and proceed to the checkout process.
 
 ## Order Page
 
-![Order Page](images/Capture5.png)
+![Order Page](/images/Capture5.png)
 
 It provides us all the orders which we placed their tracking numbers and details of the orders with quantities and prices.
 
 ## Email Confirmation
 
-![Email Confirmation](images/Capture6.png)
+![Email Confirmation](/images/Capture6.png)
 
 When we place the order it will provide us the confirmation email that the order has been placed successfully and the tracking link to track our orders.
 
